@@ -3,16 +3,27 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      output: '',
+    }
+  }
+
+  updateOutput(val){
+    this.setState(()=> {
+      return {
+        output: val,
+      }    
+    })
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className='App'>
+        <input className='input' placeholder="This is whats being rendered" onChange={event => this.updateOutput(event.target.value)}/>
+        <p className='output'>{this.state.output}</p>
       </div>
     );
   }
